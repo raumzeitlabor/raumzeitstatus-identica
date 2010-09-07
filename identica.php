@@ -127,9 +127,14 @@ class Identica {
     * @param status is the text of your status update.
     * @return the current update from authenticating user.
     */
-        function updateStatus($status) {
+        function updateStatus($status, $more = array()) {
                 $status = urlencode(stripslashes(urldecode($status)));
-                $api_call = sprintf("http://identi.ca/api/statuses/update.xml?status=%s", $status);
+                $params = array();
+                foreach ($more as $k => $v) {
+                        $params[] = urlencode($k) . '=' . urlencode($v);
+                }
+                $api_call = sprintf("http://identi.ca/api/statuses/update.xml?status=%s&%s",
+                        $status, implode('&', $params));
                 return $this->APICall($api_call, true, true);
         }
        
