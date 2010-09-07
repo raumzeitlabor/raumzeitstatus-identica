@@ -4,7 +4,7 @@ require_once 'identica.php';
 
 $dent = new Identica(USER, PASS, 'RaumZeitStatus');
 
-$status = file_get_contents("http://scytale.name/files/tmp/rzlstatus.txt");
+$status = file_get_contents('http://status.raumzeitlabor.de/api/simple');
 
 switch($status){
 	case 0:
