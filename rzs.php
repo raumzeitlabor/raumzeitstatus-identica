@@ -1,5 +1,5 @@
 <?php
-include('identica.php');
+require_once 'identica.php';
 
 $dent = new Identica("raumzeitstatus", "PASSWORT", "RaumZeitStatus");
 
@@ -16,14 +16,13 @@ switch($status){
 
 $nbr = file_get_contents("nbr");
 
-
 echo "nbr = ". $nbr." - status ". $status;
 
 if($text AND $nbr != $status){
 	$dent->updateStatus($text);
 
 	$datei = fopen("nbr","w");
-  	fwrite($datei, $status);
-  	fclose($datei);
+	fwrite($datei, $status);
+	fclose($datei);
 }
 ?>
