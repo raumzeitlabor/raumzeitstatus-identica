@@ -1,7 +1,8 @@
 <?php
+require_once 'config.php';
 require_once 'identica.php';
 
-$dent = new Identica("raumzeitstatus", "PASSWORT", "RaumZeitStatus");
+$dent = new Identica(USER, PASS, 'RaumZeitStatus');
 
 $status = file_get_contents("http://scytale.name/files/tmp/rzlstatus.txt");
 
